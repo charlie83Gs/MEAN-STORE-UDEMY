@@ -1,0 +1,13 @@
+@import "./../../../pages/admin.component.scss";
+
+#sidebar-wrapper {
+    background-color: $admin-primary-color;
+}
+
+.sidebar-heading{
+    a{
+        background-color: $admin-primary-color;
+        text-decoration: none;
+        color:white;
+    }
+}

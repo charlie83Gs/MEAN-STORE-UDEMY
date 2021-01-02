@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mean-storefront"
+    }
+  },
+  "defaultProject": "mean-storefront",
+  "cli": {
+    "analytics": "fc743b0e-d65d-4f1a-b79c-94ab7eb1ac6c"
+  }
 }

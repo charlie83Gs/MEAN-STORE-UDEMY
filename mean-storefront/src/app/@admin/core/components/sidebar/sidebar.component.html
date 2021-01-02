@@ -1,0 +1,18 @@
+
+  <!-- Sidebar -->
+  <div class="border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active"  >
+        <i class="fas fa-gamepad"></i> Gamezonia 
+      </a>
+    </div>
+    <div class="list-group list-group-flush">
+      <a [routerLink]="['/admin']" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </a>
+      <a [routerLink]="['/admin/users']" routerLinkActive="router-link-active"  class="list-group-item list-group-item-action"> 
+        <i class="fas fa-users"></i> Users
+      </a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
