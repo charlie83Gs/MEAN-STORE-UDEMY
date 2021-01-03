@@ -3,6 +3,7 @@ version: "3.7"
 #   - Docker Hub Mongo https://hub.docker.com/_/mongo
 #   - Docker Compose tutorial https://docs.microsoft.com/en-us/visualstudio/docker/tutorials/use-docker-compose
 #   - Docker Hub Mongo-Express https://hub.docker.com/_/mongo-express
+#   - Mongo Auth https://medium.com/rahasak/enable-mongodb-authentication-with-docker-1b9f7d405a94
 services:
   # web:
     # build: .
@@ -22,6 +23,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD
     volumes:
       - /var/lib/mongodb/data/db:/data/db
+      ports:
+      - 27017:27017
   mongo-express:
     image: mongo-express
     restart: always
