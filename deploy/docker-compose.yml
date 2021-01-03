@@ -2,6 +2,7 @@ version: "3.7"
 # Sources
 #   - Docker Hub Mongo https://hub.docker.com/_/mongo
 #   - Docker Compose tutorial https://docs.microsoft.com/en-us/visualstudio/docker/tutorials/use-docker-compose
+#   - Docker Hub Mongo-Express https://hub.docker.com/_/mongo-express
 services:
   # web:
     # build: .
@@ -17,7 +18,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    
+    volumes:
+      - /var/lib/mongdb/data/db:/data/db
   mongo-express:
     image: mongo-express
     restart: always
@@ -27,4 +29,4 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
     volumes:
-      - /var/lib/mongdb/data/db:/data/db
+      - /var/lib/mongdb/data/express:/data/db
