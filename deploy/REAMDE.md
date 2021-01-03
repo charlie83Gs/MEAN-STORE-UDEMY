@@ -1,0 +1,11 @@
+# Proyect deployment with docker
+
+Setup MONGO_INITDB_ROOT_USERNAME using:
+~~~
+export MONGO_INITDB_ROOT_USERNAME=<USERNAME_HERE>
+~~~
+
+Setup MONGO_INITDB_ROOT_PASSWORD using:
+~~~
+export MONGO_INITDB_ROOT_PASSWORD=<PASSWORD_HERE>
+~~~
