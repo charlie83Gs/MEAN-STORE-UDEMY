@@ -1,6 +1,7 @@
 version: "3.7"
 # Sources
-#   - Docker Compose https://hub.docker.com/_/mongo
+#   - Docker Hub Mongo https://hub.docker.com/_/mongo
+#   - Docker Compose tutorial https://docs.microsoft.com/en-us/visualstudio/docker/tutorials/use-docker-compose
 services:
   # web:
     # build: .
