@@ -23,7 +23,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD
     volumes:
       - /var/lib/mongodb/data/db:/data/db
-      ports:
+    ports:
       - 27017:27017
   mongo-express:
     image: mongo-express
