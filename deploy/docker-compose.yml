@@ -15,6 +15,8 @@ services:
   mongo:
     image: "mongo:4.4"
     restart: always
+    command: [--auth]
+    container_name: mongodb
     environment:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
@@ -23,6 +25,7 @@ services:
   mongo-express:
     image: mongo-express
     restart: always
+    container_name: mongo-express
     ports:
       - 8081:8081
     environment:
