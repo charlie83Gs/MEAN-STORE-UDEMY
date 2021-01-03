@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 # Sources
 #   - Docker Compose https://hub.docker.com/_/mongo
 services:
