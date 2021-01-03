@@ -19,7 +19,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
     volumes:
-      - /var/lib/mongdb/data/db:/data/db
+      - /var/lib/mongodb/data/db:/data/db
   mongo-express:
     image: mongo-express
     restart: always
@@ -29,4 +29,4 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
     volumes:
-      - /var/lib/mongdb/data/express:/data/db
+      - /var/lib/mongodb/data/express:/data/db
