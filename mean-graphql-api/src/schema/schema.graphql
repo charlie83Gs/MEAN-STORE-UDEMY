@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# Grahql Schema Definitions
+# This document defines all types and queries for the graphql api
+# ------------------------------------------------------
+
+
+# ------------------------------------------------------
+# User Definition
+# ------------------------------------------------------
+
+type User {
+    id: ID!
+    name: String!
+    lastname: String!
+    email: String!
+    password: String!
+    registerDate: String!
+    birthday: String!
+}
+
+type Query {
+    # Users in database it could be Client/Admin
+    users: [User!]!
+}
