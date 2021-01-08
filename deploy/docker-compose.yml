@@ -5,14 +5,27 @@ version: "3.7"
 #   - Docker Hub Mongo-Express https://hub.docker.com/_/mongo-express
 #   - Mongo Auth https://medium.com/rahasak/enable-mongodb-authentication-with-docker-1b9f7d405a94
 services:
-  # web:
-    # build: .
-    # ports:
-      # - "5000:5000"
-    # volumes:
-      # - .:/code
-    # environment:
-      # FLASK_ENV: development
+  mean-store-graphql-api:
+    image: nodejs:10.23.1-alpine3.9
+    container_name: graphql
+    restart: unless-stopped
+    ports:
+      - "80:4200"
+    environment:
+      - MEAN_STORE_NODE_ENV: production
+      - MEAN_STORE_SECRET
+      - MEAN_STORE_PORT
+      - MEAN_STORE_DATABASE
+    networks:
+      - mean-store-network
+    depends_on:
+      - mongodb
+    working_dir: /home/node/app
+    volumes:
+      - ../mean-graphql-api:/home/node/app
+    command:
+      - ./wait-for.sh 127.0.0.1:27017 && npm i && npm start
+
   mongo:
     image: "mongo:4.4"
     restart: always
@@ -25,14 +38,9 @@ services:
       - /var/lib/mongodb/data/db:/data/db
     ports:
       - 27017:27017
-  mongo-express:
-    image: mongo-express
-    restart: always
-    container_name: mongo-express
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-    volumes:
-      - /var/lib/mongodb/data/express:/data/db
+    networks:
+      - mean-store-network
+
+  networks:
+  app-network:
+    driver: bridge

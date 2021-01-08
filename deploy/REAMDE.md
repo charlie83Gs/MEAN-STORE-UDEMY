@@ -1,6 +1,24 @@
 # Project deployment with docker
 
+## Graphql Api
+Environment variables for mongo-express
 
+### Setup Graphql Secret for authentication using:
+~~~
+export MEAN_STORE_SECRET=<SECRET TOKEN HERE>
+~~~
+
+### Setup Mongo Connection String
+~~~
+export MEAN_STORE_DATABASE=<SECRET TOKEN HERE>
+~~~
+
+### Setup Graphql Secret for authentication using:
+~~~
+export MEAN_STORE_NODE_ENV='production'
+~~~
+
+'production'
 ## Mongo
 Environment variables for mongodb
 
@@ -14,23 +32,6 @@ export MONGO_INITDB_ROOT_USERNAME=<USERNAME_HERE>
 export MONGO_INITDB_ROOT_PASSWORD=<PASSWORD_HERE>
 ~~~
 
-## Mongo-Express
-Environment variables for mongo-express
-
-### Set Mongo-Express Admin to true if you wish to modify db using interface
-~~~
-export ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-~~~
-
-### Setup Mongo-Express Username:
-~~~
-export MONGO_INITDB_ROOT_USERNAME=<USERNAME_HERE>
-~~~
-
-### Setup Mongo-Express Password using:
-~~~
-export MONGO_INITDB_ROOT_PASSWORD=<PASSWORD_HERE>
-~~~
 
 
 ### To access the mongo shell inside the container use the comand
