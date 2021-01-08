@@ -9,7 +9,7 @@ services:
   mean-store-graphql-api:
     image: node:10.23.1-alpine3.9
     container_name: graphql
-    restart: unless-stopped
+    restart: always
     ports:
       - "80:4200"
     environment:
@@ -24,7 +24,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - ../mean-graphql-api:/home/node/app
-    command:
+    command:las
       - ./wait-for.sh 127.0.0.1:27017 && npm i && npm start
 
   mongo:
