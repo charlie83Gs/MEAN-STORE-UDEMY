@@ -1,6 +1,7 @@
 import { COLLECTIONS, MESSAGES } from '../../config/constants';
 import {IResolvers} from 'graphql-tools';
 import bcrypt from 'bcrypt';
+import { findOneElement, getNewDocumentId, insertOneElement } from '../../lib/db-operations';
 
 
 const resolversUserMutation: IResolvers = {
@@ -10,9 +11,8 @@ const resolversUserMutation: IResolvers = {
         //--------------------------------------------------------------------------
         async register(root,{user},{ db }) {
             //check if user exists
-            const userCheck = await db.collection(COLLECTIONS.USERS)
-                                        .findOne({email:user.email});
-
+            const userCheck = await findOneElement(db,COLLECTIONS.USERS, {email:user.email});
+            console.log(userCheck)
             if(userCheck != null){
                 return  {
                             status: false,
@@ -22,28 +22,20 @@ const resolversUserMutation: IResolvers = {
             }                        
 
             //get las registered user name
-            const lastUser = await db.collection(COLLECTIONS.USERS)
-                                    .find()
-                                    .limit(1)
-                                    .sort({registerDate: -1})
-                                    .toArray();
-            if(lastUser.length <= 0){
-                user.id = 1
-            }else{
-                user.id = lastUser[0].id + 1; 
-            }
+            user.id = await getNewDocumentId(db,COLLECTIONS.USERS, {registerDate : -1});
+
             // Asign current date in ISO format into the registerDate field
             user.registerDate = new Date().toISOString();
             //encrypt password
             user.password = bcrypt.hashSync(user.password, 10);
             // console.log(user.registerDate)
             // Save the document in the database
-            return await db.collection(COLLECTIONS.USERS)
-                            .insertOne(user).then(
+         
+            return await insertOneElement(db,COLLECTIONS.USERS, user).then(
                                 async () => {
                                     return {
                                         status: true,
-                                        message: MESSAGES.REGISTER_USER_EXISTS,
+                                        message: MESSAGES.REGISTER_SUCCESFUL,
                                         user: user
                                     }
                                 }

@@ -2,6 +2,7 @@ import {IResolvers} from 'graphql-tools';
 import { COLLECTIONS, MESSAGES } from '../../config/constants';
 import JWT from '../../lib/jwt';
 import bcrypt from 'bcrypt';
+import { findManyElements, findOneElement } from '../../lib/db-operations';
 
 const resolversUserQuery: IResolvers = {
     Query: {
@@ -11,9 +12,7 @@ const resolversUserQuery: IResolvers = {
         async users(_, __, {db}, info) {
             // console.log(root,args,context,info);
             try {
-                var users = await db.collection(COLLECTIONS.USERS)
-                                    .find()
-                                    .toArray()
+                var users = await findManyElements(db,COLLECTIONS.USERS);
                 return {
                     "status": true,
                     "message": "User list loaded succesfully",
@@ -35,7 +34,7 @@ const resolversUserQuery: IResolvers = {
         //--------------------------------------------------------------------------
         async login(_, {email,password},{db}, info){
             try {
-                var user = await db.collection(COLLECTIONS.USERS).findOne({email});
+                var user = await findOneElement(db,COLLECTIONS.USERS, {email});
                 if(!user){
                     return {
                         "status": false,
