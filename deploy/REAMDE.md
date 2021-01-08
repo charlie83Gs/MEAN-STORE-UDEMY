@@ -38,6 +38,7 @@ export MONGO_INITDB_ROOT_PASSWORD=<PASSWORD_HERE>
 
 ~~~
 docker exec -it mongodb bash
+docker exec -it graphql bash
 ~~~
 
 If environemnt variables are configured access mongo shell directly
