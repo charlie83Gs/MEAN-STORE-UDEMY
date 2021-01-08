@@ -43,5 +43,5 @@ services:
       - mean-store-network
 
 networks:
-  app-network:
+  mean-store-network:
     driver: bridge
