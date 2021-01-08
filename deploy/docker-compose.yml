@@ -26,7 +26,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - ../mean-graphql-api:/home/node/app
-
+    command: npm run dev
   mongo:
     image: "mongo:4.4"
     restart: always
