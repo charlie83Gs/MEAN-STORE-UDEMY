@@ -20,7 +20,7 @@ services:
     networks:
       - mean-store-network
     depends_on:
-      - mongodb
+      - mongo
     working_dir: /home/node/app
     volumes:
       - ../mean-graphql-api:/home/node/app
