@@ -7,7 +7,7 @@ version: "3.7"
 #   - Node js compose tutorial https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose-es#paso-1-clonar-el-proyecto-y-modificar-las-dependencias
 services:
   mean-store-graphql-api:
-    image: nodejs:10.23.1-alpine3.9
+    image: node:10.23.1-alpine3.9
     container_name: graphql
     restart: unless-stopped
     ports:
