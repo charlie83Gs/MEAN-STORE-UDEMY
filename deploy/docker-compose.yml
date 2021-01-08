@@ -13,7 +13,7 @@ services:
     ports:
       - "80:4200"
     environment:
-      - MEAN_STORE_NODE_ENV: "production"
+      - MEAN_STORE_NODE_ENV="production"
       - MEAN_STORE_SECRET
       - MEAN_STORE_PORT
       - MEAN_STORE_DATABASE
