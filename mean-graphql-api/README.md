@@ -11,3 +11,4 @@ To run this project the following environemtn variables need to be configured.
 | MEAN_STORE_PORT | Port in which the server listens to requests default is **4200**|
 | MEAN_STORE_SECRET | Secret used in jwt authentication |
 | MEAN_STORE_DATABASE | Mongodb URL |
+| MEAN_STORE_NODE_ENV | environment could be **'production'** or **'development'** | 
