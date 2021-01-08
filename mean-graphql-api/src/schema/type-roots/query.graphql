@@ -1,0 +1,11 @@
+# ------------------------------------------------------
+# Queries
+# ------------------------------------------------------
+
+type Query {
+    # Users in database it could be Client/Admin
+    users: UserResult
+    login (email: String!, password: String!): LoginResult
+    auth: AuthResult
+    products: Boolean
+}

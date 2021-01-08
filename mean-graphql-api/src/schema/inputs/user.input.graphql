@@ -1,0 +1,10 @@
+#input to add user data in the registry
+input UserInput {
+    id:ID!
+    name: String!
+    lastname: String!
+    email: String!
+    password: String!
+    birthday: String!
+    role: Role=CLIENT
+}

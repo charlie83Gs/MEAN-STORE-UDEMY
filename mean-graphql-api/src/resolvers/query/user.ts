@@ -1,9 +1,9 @@
 import {IResolvers} from 'graphql-tools';
-import { COLLECTIONS, MESSAGES } from './../config/constants';
-import JWT from '../lib/jwt';
+import { COLLECTIONS, MESSAGES } from '../../config/constants';
+import JWT from '../../lib/jwt';
 import bcrypt from 'bcrypt';
 
-const resolversQuery: IResolvers = {
+const resolversUserQuery: IResolvers = {
     Query: {
         //--------------------------------------------------------------------------
         // User query
@@ -90,4 +90,4 @@ const resolversQuery: IResolvers = {
     }
 };
 
-export default resolversQuery;
+export default resolversUserQuery;

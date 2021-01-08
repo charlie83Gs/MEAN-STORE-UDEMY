@@ -1,0 +1,6 @@
+
+type RegisterResult implements Result {
+    user: User
+    status: Boolean!
+    message: String!
+}

@@ -1,0 +1,7 @@
+
+
+type UserResult implements Result {
+    users: [User!]!
+    status: Boolean!
+    message: String!
+}

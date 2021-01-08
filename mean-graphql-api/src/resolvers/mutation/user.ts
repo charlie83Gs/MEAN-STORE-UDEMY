@@ -1,9 +1,9 @@
-import { COLLECTIONS, MESSAGES } from './../config/constants';
+import { COLLECTIONS, MESSAGES } from '../../config/constants';
 import {IResolvers} from 'graphql-tools';
 import bcrypt from 'bcrypt';
 
 
-const resolversMutation: IResolvers = {
+const resolversUserMutation: IResolvers = {
     Mutation: {
         //--------------------------------------------------------------------------
         // Register User
@@ -62,4 +62,4 @@ const resolversMutation: IResolvers = {
     }
 };
 
-export default resolversMutation;
+export default resolversUserMutation;

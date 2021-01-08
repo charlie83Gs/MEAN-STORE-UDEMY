@@ -1,6 +1,6 @@
 {
   "name": "mean-graphql-api",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Backend project GRAPHQL API for mean store",
   "main": "build/server.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
+    "@wiicamp/graphql-merge-resolvers": "^2.1.2",
     "apollo-server-express": "^2.19.1",
     "bcrypt": "^5.0.0",
     "chalk": "^4.1.0",
