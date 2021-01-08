@@ -1,3 +1,4 @@
+import { IContext } from './interfaces/context.interface';
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
@@ -7,6 +8,7 @@ import expressPlayground from 'graphql-playground-middleware-express';
 import environments from './config/environments';
 import {PORT} from './config/constants'
 import { Server } from 'http';
+import Database from './lib/database';
 /*
 * ----------------------------------------------------------
 * Constants
@@ -35,6 +37,13 @@ async function init(){
     // Currenly not working properly in windows
     // app.use(compression);
     
+    //initialize database
+    const database = new Database();
+    const db = await database.init();
+    const context = async({req, connection} : IContext )=> {
+        const token = (req) ? req.headers.authorization : connection.authorization;
+        return { db , token }
+    }
     /*
     * ----------------------------------------------------------
     *  Configure GraphQL Apollo Server and Middleware
@@ -43,6 +52,7 @@ async function init(){
     var graphql_server = new ApolloServer({
         schema,
         introspection:true,
+        context
     });
 
     graphql_server.applyMiddleware({app})
