@@ -24,7 +24,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - ../mean-graphql-api:/home/node/app
-    command:las
+    command:
       - ./wait-for.sh 127.0.0.1:27017 && npm i && npm start
 
   mongo:
