@@ -1,0 +1,9 @@
+# ------------------------------------------------------
+# Interfaces
+# ------------------------------------------------------
+
+# required properties for api reponses
+interface Result {
+    status: Boolean!
+    message: String!
+}

@@ -4,9 +4,14 @@
   "description": "Backend project GRAPHQL API for mean store",
   "main": "build/server.js",
   "scripts": {
+    "copy-schemas": "cpx src/**/*.graphql build",
+    "clean-dependencies-windows": "del /F /Q node_modules && npm install --silent",
+    "clean-dependencies": "rm -rf node_modules && npm install --silent",
     "start": "node build/server.js",
-    "build": "tsc -p .",
-    "dev": "nodemon \"src/server.ts\" --exec \"ts-node\" \"src/server.ts\" -e ts,graphql,json"
+    "build": "tsc -p . &&  npm run copy-schemas",
+    "dev": "nodemon \"src/server.ts\" --exec \"ts-node\" \"src/server.ts\" -e ts,graphql,json",
+    "prod": "npm run clean-dependencies && npm run build && npm run start",
+    "prod-win": "npm run clean-dependencies-windows && npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -34,6 +39,7 @@
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "cpx": "^1.5.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.4.0",
