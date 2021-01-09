@@ -5,6 +5,7 @@ version: "3.7"
 #   - Docker Hub Mongo-Express https://hub.docker.com/_/mongo-express
 #   - Mongo Auth https://medium.com/rahasak/enable-mongodb-authentication-with-docker-1b9f7d405a94
 #   - Node js compose tutorial https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose-es#paso-1-clonar-el-proyecto-y-modificar-las-dependencias
+#   - Working command for docker compose https://www.docker.com/blog/how-to-setup-your-local-node-js-development-environment-using-docker-part-2/
 services:
   mean-store-graphql-api:
     build:

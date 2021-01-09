@@ -6,3 +6,4 @@ export interface IUser{
     password: string;
     birthday: string;
     role: string;
+}

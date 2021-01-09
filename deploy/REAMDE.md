@@ -17,6 +17,11 @@ export MEAN_STORE_DATABASE=<SECRET TOKEN HERE>
 ~~~
 export MEAN_STORE_NODE_ENV='production'
 ~~~
+### Setup database connection string using:
+~~~
+export MEAN_STORE_DATABASE='mongodb://user:password@mongodb/mean-store?authSource=admin'
+~~~
+Due to the network cofnigured in the docker-compose.yml file the host mongodb can be resolved
 
 'production'
 ## Mongo
