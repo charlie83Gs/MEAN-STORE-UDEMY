@@ -11,5 +11,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  asignBirthday($event){
+    console.log({$event})
+  }
 
 }

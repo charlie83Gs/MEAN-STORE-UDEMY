@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from '@admin/pages/admin.module';
 import { PublicModule } from '@shop/pages/public.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PublicModule } from '@shop/pages/public.module';
     AdminModule,
     PublicModule,
     AppRoutingModule,
-    GraphqlModule
+    GraphqlModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

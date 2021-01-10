@@ -8,5 +8,6 @@ export const USER_FRAGMENT = gql`
         email
         registerDate @include(if: $dates)
         birthday @include(if: $dates)
+        role
     }
 `;

@@ -5,6 +5,7 @@ import { AUTH_DATA_QUERY, LOGIN_QUERY } from 'src/app/@graphql/operations/query/
 import { ApiService } from 'src/app/@graphql/services/api.service';
 import {map} from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,15 @@ export class AuthService extends ApiService {
 
   updateSession(newValue: IAuthData){
     this.accessVar.next(newValue);
+    console.log("session updates")
   }
 
   //methos to use graphql api
   login (email:string, password:string) {
     let variables = {
       email,
-      password
+      password,
+      dates:false
     };
     return this.get(LOGIN_QUERY, variables).pipe(
       map(
@@ -65,7 +68,8 @@ export class AuthService extends ApiService {
     };
 
     localStorage.setItem('session',JSON.stringify(session))
-
+    //validate session after session update
+    this.isLogged()
   }
 
   getSession(){

@@ -13,13 +13,15 @@ export class NavbarComponent implements OnInit {
   };
   access : boolean =  false;
   role:string;
+  userLabel = '';
 
   constructor(private authService: AuthService) { 
     this.authService.accessVar$.subscribe(
       (result) =>{
         this.session = result;
-
         this.access = result.status;
+        this.role = result.user?.role;
+          this.userLabel = `${capitalizeFirstLetter(result.user?.name)} ${capitalizeFirstLetter(result.user?.lastname)}` 
       }
     )
   }
@@ -32,4 +34,10 @@ export class NavbarComponent implements OnInit {
     this.authService.removeSession();
   }
 
+}
+
+
+function capitalizeFirstLetter(str: string) {
+  if(!str) return ""
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

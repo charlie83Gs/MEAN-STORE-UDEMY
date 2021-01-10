@@ -44,7 +44,7 @@
             class="nav-link"
             [routerLink]="['/admin']"
             routerLinkActive="router-link-active"
-            *ngIf="access"
+            *ngIf="access && role=='ADMIN'"
           >
             Admin
           </a>
@@ -80,7 +80,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Current User
+            {{userLabel}}
           </a>
           <div
             class="dropdown-menu dropdown-menu-right"
