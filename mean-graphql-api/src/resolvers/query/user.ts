@@ -53,7 +53,8 @@ const resolversUserQuery: IResolvers = {
                 return {
                     "status": true,
                     "message": verified? MESSAGES.LOGIN_SUCCESFULL: MESSAGES.LOGIN_FAILED,
-                    "token": verified? token : null
+                    "token": verified? token : null,
+                    user
                 };
 
             } catch (error) {
