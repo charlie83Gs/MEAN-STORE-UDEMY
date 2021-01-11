@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { basicAlert } from 'src/app/@shared/alerts/toasts';
 import { ALERT_TYPE } from 'src/app/@shared/alerts/values.config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService, private router : Router) { }
 
   submit(){
     this.auth.login(this.login.email,this.login.password).subscribe(
@@ -23,6 +24,7 @@ export class LoginComponent {
         if(result.status && result.token) {
           basicAlert(ALERT_TYPE.SUCCESS,result.message);
           this.auth.setSession(result.token);
+          this.router.navigate(["/"])
           return
         }
         basicAlert(ALERT_TYPE.WARNING,result.message);

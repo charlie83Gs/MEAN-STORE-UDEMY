@@ -3,6 +3,8 @@ import { Apollo } from 'apollo-angular';
 import { USER_LIST_QUERY } from 'src/app/@graphql/operations/query/user';
 import { ApiService } from 'src/app/@graphql/services/api.service';
 import {map} from 'rxjs/operators';
+import { IRegisterForm } from '@core/interface/register.interface';
+import { REGISTER_USER_MUTATION } from '@graphql/operations/mutation/user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,20 @@ export class UsersService extends ApiService{
       map(
         (result:any) => {
           return result.users;
+        }
+      )
+    );
+  }
+
+  register(user : IRegisterForm){
+    let variables = {
+      user,
+      dates:false
+    };
+    return this.set(REGISTER_USER_MUTATION,variables).pipe(
+      map(
+        (result:any) => {
+          return result.register;
         }
       )
     );

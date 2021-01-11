@@ -37,6 +37,7 @@
             #password="ngModel"
             [(ngModel)]="login.password"
             placeholder="Introduce your password"
+            class="form-control"
             [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}"
             name="password"
             required

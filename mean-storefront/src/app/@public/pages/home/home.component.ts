@@ -13,22 +13,22 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AuthService, private users: UsersService) { }
 
   ngOnInit(): void {
-    this.auth.login("charlie@gmail.com","1234").subscribe(
-      result => {
-        console.log(JSON.stringify(result));
-      }
-    )
+    // this.auth.login("charlie@gmail.com","1234").subscribe(
+    //   result => {
+    //     console.log(JSON.stringify(result));
+    //   }
+    // )
 
-    this.users.getUsers().subscribe(
-      result => {
-        console.log(JSON.stringify(result));
-      }
-    )
-    this.auth.validateSession().subscribe(
-      result => {
-        console.log(JSON.stringify(result));
-      }
-    )
+    // this.users.getUsers().subscribe(
+    //   result => {
+    //     console.log(JSON.stringify(result));
+    //   }
+    // )
+    // this.auth.validateSession().subscribe(
+    //   result => {
+    //     console.log(JSON.stringify(result));
+    //   }
+    // )
     
     // this.api.register(
     //   "francis@gmail.com",

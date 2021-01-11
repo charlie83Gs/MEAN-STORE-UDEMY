@@ -1,18 +1,16 @@
 import gql from "graphql-tag";
+import { USER_FRAGMENT } from '@graphql/operations/fragment/user';
 
-export const REGISTER_MUTATION= gql`
-  mutation addUser($user: UserInput!) {
+export const REGISTER_USER_MUTATION= gql`
+  mutation addUser($user: UserInput!,$dates: Boolean!) {
   register(user: $user) {
     status,
   	message,
     user{
-      id
-      name
-      lastname
-      registerDate
-      email
+      ...UserObject
     }
   }
 }
+${ USER_FRAGMENT }
 
 `;
