@@ -7,27 +7,6 @@ version: "3.7"
 #   - Node js compose tutorial https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose-es#paso-1-clonar-el-proyecto-y-modificar-las-dependencias
 #   - Working command for docker compose https://www.docker.com/blog/how-to-setup-your-local-node-js-development-environment-using-docker-part-2/
 services:
-  mean-store-graphql-api:
-    build:
-      context: ../mean-graphql-api
-    container_name: graphql
-    restart: always
-    ports:
-      - "80:4200"
-    environment:
-      - MEAN_STORE_NODE_ENV="production"
-      - NODE_ENV="production"
-      - MEAN_STORE_SECRET
-      - MEAN_STORE_PORT
-      - MEAN_STORE_DATABASE
-    networks:
-      - mean-store-network
-    depends_on:
-      - mongo
-    working_dir: /home/node/app
-    volumes:
-      - ../mean-graphql-api:/home/node/app
-    command: npm run prod
   mongo:
     image: "mongo:4.4"
     restart: always
@@ -43,6 +22,43 @@ services:
     networks:
       - mean-store-network
 
+  mean-store-graphql-api:
+    build:
+      context: ../mean-graphql-api
+    container_name: graphql
+    restart: always
+    ports:
+      - "3333:4200"
+    environment:
+      - MEAN_STORE_NODE_ENV="production"
+      - NODE_ENV="production"
+      - MEAN_STORE_SECRET
+      - MEAN_STORE_PORT
+      - MEAN_STORE_DATABASE
+    networks:
+      - mean-store-network
+    depends_on:
+      - mongo
+    working_dir: /home/node/app
+    volumes:
+      - ../mean-graphql-api:/home/node/app
+    command: npm run prod
+
+  mean-store-frontent:
+    build:
+      context: ../mean-storefront
+    container_name: angular
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - mean-store-network
+    depends_on:
+      - mongo
+      - mean-store-graphql-api
+    working_dir: /home/node/app
+    
 networks:
   mean-store-network:
     driver: bridge
