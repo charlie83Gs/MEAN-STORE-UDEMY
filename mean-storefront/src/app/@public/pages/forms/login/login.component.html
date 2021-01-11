@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg"></div>
+      <div class="col-lg-6">
+        <form (ngSubmit)="submit()" #forma="ngForm"> 
+          <h1>Inicio de sesión</h1>
+          <p>Introduzca los credenciales para iniciar la sesión</p>
+          <p class="psw">
+            ¿No tienes cuenta? Entra
+            <a href="#">aquí</a> para crearla gratis
+          </p>
+          <hr />
+          <label for="email"><b>Correo electrónico</b></label>
+          <input
+            type="email"
+            #email="ngModel"
+            [(ngModel)]="login.email"
+            placeholder="Introduce your email"
+            name="email"
+            required
+            class="form-control"
+            [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}"
+            pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}'
+          />
+          <div *ngIf="email.invalid && (email.touched || email.dirty) " class="alert alert-danger">
+              <div *ngIf="email.errors.required">
+                The email field cannot be empty
+              </div>
+              <div *ngIf="email.errors && email.errors.pattern">
+                The email provided is not valid
+              </div>
+            </div>
+
+          <label for="password"><b>Contraseña</b></label>
+          <input
+            type="password"
+            #password="ngModel"
+            [(ngModel)]="login.password"
+            placeholder="Introduce your password"
+            class="form-control"
+            [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}"
+            name="password"
+            required
+          />
+
+          <div *ngIf="password.invalid && (password.touched || password.dirty) " class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+              The password field cannot be empty
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg">
+              <button type="submit" [disabled]="!forma.valid" class="signup-btn">Iniciar sesión</button>
+            </div>
+          </div>
+          <div class="more-options">
+            <p class="psw">
+              ¿Has olvidado la <a [routerLink]="['/forgot']">contraseña?</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg"></div>
+    </div>
+  </div>

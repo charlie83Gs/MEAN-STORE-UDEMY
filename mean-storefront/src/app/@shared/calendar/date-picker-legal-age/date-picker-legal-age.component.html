@@ -1,0 +1,13 @@
+<input
+  type="text"
+  ngbDatepicker
+  #d="ngbDatepicker"
+  [(ngModel)]="model"
+  (click)="d.toggle()"
+  (ngModelChange)="onDateChanged()"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  class="form-control"
+  [ngClass]="{'is-valid': model, 'is-invalid': !model}"
+  readonly
+/>
