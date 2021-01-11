@@ -30,7 +30,7 @@ export class GraphqlModule {
       }
     );
 
-    const uri = 'http://167.71.184.84/graphql';
+    const uri = 'http://167.71.184.84:3333/graphql';
     const link = ApolloLink.from(
       [
         errorLink,

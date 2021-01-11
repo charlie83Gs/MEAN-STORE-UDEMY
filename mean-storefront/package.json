@@ -2,8 +2,10 @@
   "name": "mean-storefront",
   "version": "0.2.0",
   "scripts": {
+    "clean-dependencies": "rm -rf node_modules && npm install --silent",
     "ng": "ng",
     "start": "ng serve",
+    "docker": "npm run clean-dependenciesn && ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
