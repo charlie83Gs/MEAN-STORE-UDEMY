@@ -3,7 +3,7 @@ FROM node:10.23.1-alpine3.9 AS compile-image
 # RUN npm install -g yarn
 
 WORKDIR /opt/ng
-COPY .npmrc package.json package-lock.json ./
+COPY package.json package-lock.json ./
 RUN npm install
 
 ENV PATH="./node_modules/.bin:$PATH" 
