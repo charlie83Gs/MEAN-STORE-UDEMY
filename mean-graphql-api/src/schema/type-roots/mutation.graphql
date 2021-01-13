@@ -4,4 +4,9 @@
 
 type Mutation {
     register(user: UserInput!): RegisterResult!
+    updateUser(user: UserUpdateInput!) : UserResult!
+    deleteUser(id: ID!) : UserResult!
+    addGenre(genre: String!) : GenreResult!
+    updateGenre(id: ID!, genre: String!) : GenreResult!
+    deleteGenre(id: ID!) : GenreResult!
 }

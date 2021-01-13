@@ -22,10 +22,10 @@ export const getNewDocumentId = async (
     .toArray();
 
   if (lastElement.length <= 0) {
-    return 1;
+    return '1';
   }
 
-  return lastElement[0].id + 1;
+  return (Number(lastElement[0].id) + 1).toString();
 };
 
 export const findOneElement = async (
@@ -58,4 +58,22 @@ export const insertManyElement = async (
   documents: Array<object>
 ) => {
   return await db.collection(collection).insertMany(documents);
+};
+
+
+export const updateOneElement = async (
+  db: Db,
+  collection: string,
+  filter: object,
+  update: object
+) => {
+  return await db.collection(collection).updateOne(filter,{$set:update});
+};
+
+export const deleteOneElement = async (
+  db: Db,
+  collection: string,
+  filter: object
+) => {
+  return await db.collection(collection).deleteOne(filter);
 };

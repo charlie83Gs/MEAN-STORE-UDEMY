@@ -2,6 +2,7 @@ import { COLLECTIONS, MESSAGES } from '../../config/constants';
 import {IResolvers} from 'graphql-tools';
 import bcrypt from 'bcrypt';
 import { findOneElement, getNewDocumentId, insertOneElement } from '../../lib/db-operations';
+import UserService from '../../services/resolvers/user.service';
 
 
 const resolversUserMutation: IResolvers = {
@@ -9,47 +10,19 @@ const resolversUserMutation: IResolvers = {
         //--------------------------------------------------------------------------
         // Register User
         //--------------------------------------------------------------------------
-        async register(root,{user},{ db }) {
-            //check if user exists
-            const userCheck = await findOneElement(db,COLLECTIONS.USERS, {email:user.email});
-            console.log(userCheck)
-            if(userCheck != null){
-                return  {
-                            status: false,
-                            message: MESSAGES.REGISTER_USER_EXISTS,
-                            user: null
-                        }
-            }                        
+        //pass user properties as variables
+        async register(_,{user},{ db }) {                    
+            var variables = user;
+            var context = {db};
+            return new UserService(_, variables, context).addItem();
+        },
+        //pass user properties as variables
+        updateUser(_,{user}, context){
+            return new UserService(_, user, context).modify();
+        },
 
-            //get las registered user name
-            user.id = await getNewDocumentId(db,COLLECTIONS.USERS, {registerDate : -1});
-
-            // Asign current date in ISO format into the registerDate field
-            user.registerDate = new Date().toISOString();
-            //encrypt password
-            user.password = bcrypt.hashSync(user.password, 10);
-            // console.log(user.registerDate)
-            // Save the document in the database
-         
-            return await insertOneElement(db,COLLECTIONS.USERS, user).then(
-                                async () => {
-                                    return {
-                                        status: true,
-                                        message: MESSAGES.REGISTER_SUCCESFUL,
-                                        user: user
-                                    }
-                                }
-
-                            ).catch(
-                                (err:Error) => {
-                                    console.log(err.message);
-                                    return {
-                                        status: false,
-                                        message: MESSAGES.REGISTER_USER_FAILED,
-                                        user: null
-                                    }
-                                }
-                            )
+        deleteUser(_,variables, context){
+            return new UserService(_, variables, context).delete();
         }
     }
 };

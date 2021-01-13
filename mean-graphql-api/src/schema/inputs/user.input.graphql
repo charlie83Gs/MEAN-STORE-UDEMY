@@ -1,10 +1,22 @@
 #input to add user data in the registry
 input UserInput {
-    id:ID!
+    id:ID
     name: String!
     lastname: String!
     email: String!
     password: String!
     birthday: String!
+    role: Role=CLIENT
+}
+
+
+#input for user operations excluding user registration
+input UserUpdateInput {
+    id:ID!
+    name: String
+    lastname: String
+    email: String
+    password: String
+    birthday: String
     role: Role=CLIENT
 }

@@ -9,7 +9,8 @@ export const PORT = process.env.MEAN_STORE_PORT || 4200;
 export const DATABASE = process.env.MEAN_STORE_DATABASE || 'mongodb://localhost:27017/mean-store?authSource=admin';
 
 export enum COLLECTIONS{
-    USERS='users'
+    USERS='users',
+    GENRES='genres'
 }
 
 export enum MESSAGES {

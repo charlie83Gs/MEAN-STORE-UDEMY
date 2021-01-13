@@ -5,9 +5,7 @@ import bcrypt from 'bcrypt';
 
 const resolversProductQuery: IResolvers = {
     Query: {
-        products(){
-            return true;
-        }
+      
     }
 };
 

@@ -1,5 +1,5 @@
-type User {
-    id: ID
+type User implements Item{
+    id: ID!
     name: String!
     lastname: String!
     email: String!
@@ -7,4 +7,5 @@ type User {
     registerDate: String!
     birthday: String!
     role: Role!
+    slug: String!
 }

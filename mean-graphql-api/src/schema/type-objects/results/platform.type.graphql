@@ -1,0 +1,6 @@
+type PlatformResult implements Result {
+    platforms: [Platform!]
+    platform: Platform
+    status: Boolean!
+    message: String!
+}

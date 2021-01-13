@@ -1,0 +1,6 @@
+type GenreResult implements Result {
+    genres: [Genre!]
+    genre: Genre
+    status: Boolean!
+    message: String!
+}

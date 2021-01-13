@@ -1,0 +1,10 @@
+# ------------------------------------------------------
+# Interfaces
+# ------------------------------------------------------
+
+# Basic propertiesa of a store item
+interface Item {
+    id: ID!
+    name: String!
+    slug: String!
+}

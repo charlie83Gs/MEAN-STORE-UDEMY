@@ -5,7 +5,9 @@
 type Query {
     # Users in database it could be Client/Admin
     users: UserResult
+    user(id: ID!): UserResult
     login (email: String!, password: String!): LoginResult
     auth: AuthResult
-    products: Boolean
+    genres: GenreResult
+    genre(id: ID!): GenreResult
 }
