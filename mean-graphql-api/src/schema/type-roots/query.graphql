@@ -3,11 +3,16 @@
 # ------------------------------------------------------
 
 type Query {
-    # Users in database it could be Client/Admin
-    users: UserResult
+    # User Queries
     user(id: ID!): UserResult
     login (email: String!, password: String!): LoginResult
     auth: AuthResult
-    genres: GenreResult
+    
+    # Genre Queries 
     genre(id: ID!): GenreResult
+
+    # List queries
+    users(page: Int = 1, items: Int = 20): UserResult
+    genres(page: Int = 1, items: Int = 20): GenreResult
+
 }

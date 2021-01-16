@@ -1,4 +1,5 @@
 type GenreResult implements Result {
+    pagination: PaginationResult
     genres: [Genre!]
     genre: Genre
     status: Boolean!

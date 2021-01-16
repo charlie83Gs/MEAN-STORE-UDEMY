@@ -11,8 +11,11 @@ class GenreSerivce extends ResolverOperationsSerivce {
   }
 
   async items() {
-    const result = await this.list(this.collection, 'Genre');
+    const page = this.getVariables().pagination?.page;
+    const items = this.getVariables().pagination?.items;
+    const result = await this.list(this.collection, 'Genre',page,items);
     return {
+      pagination: result.pagination,
       status: result.status,
       message: result.message,
       genres: result.items,

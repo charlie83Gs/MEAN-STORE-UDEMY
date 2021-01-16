@@ -12,7 +12,7 @@ const resolversUserQuery: IResolvers = {
         //--------------------------------------------------------------------------
         async users(_, variables, context, info) {
             // console.log(root,args,context,info);
-            return new UserService(_, variables, context).items();
+            return new UserService(_, {pagination:variables}, context).items();
         },
 
         async user(_, variables, context, info) {

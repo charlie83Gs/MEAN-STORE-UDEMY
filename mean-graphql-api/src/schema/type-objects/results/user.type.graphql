@@ -1,6 +1,7 @@
 
 
 type UserResult implements Result {
+    pagination: PaginationResult
     users: [User!]
     user: User
     status: Boolean!

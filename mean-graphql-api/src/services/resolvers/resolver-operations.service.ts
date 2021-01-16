@@ -4,6 +4,7 @@ import { IVariablesData } from "./../../interfaces/variablesdata.interface";
 import { IContextData } from "./../../interfaces/contextdata.interface";
 import { COLLECTIONS } from "../../config/constants";
 import { findManyElements, findOneElement } from "../../lib/db-operations";
+import { pagination } from "../../lib/pagination";
 
 export default class ResolverOperationsSerivce {
   private root: object;
@@ -22,11 +23,19 @@ export default class ResolverOperationsSerivce {
     return this.context.db;
   }
   // Retrieve list
-  protected async list(collection: string, listElement: string) {
+  protected async list(collection: string, listElement: string, page: number=1, items: number =20) {
+    // console.log();
     // console.log(root,args,context,info);
     try {
-      var users = await findManyElements(this.context.db, collection);
+      const paginationData = await pagination(this.context.db,collection,page,items);
+      var users = await findManyElements(this.context.db, collection,{},paginationData);
       return {
+        pagination: {
+          page : paginationData.page,
+          pages : paginationData.pages,
+          items : paginationData.items,
+          total : paginationData.total,
+        },
         status: true,
         message: `${listElement} list loaded succesfully`,
         items: users,
@@ -34,6 +43,7 @@ export default class ResolverOperationsSerivce {
     } catch (error) {
       console.log(error);
       return {
+        pagination: null,
         status: true,
         message: `Error loading ${listElement} list`,
         items: [],

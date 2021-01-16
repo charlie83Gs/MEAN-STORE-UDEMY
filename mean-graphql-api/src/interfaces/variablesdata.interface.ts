@@ -1,3 +1,4 @@
+import { IPaginationOptions } from './pagination-options';
 import { Db } from "mongodb";
 
 // cointext for db requests
@@ -7,4 +8,5 @@ export interface IVariablesData{
     email?: string ;
     password?: string ;
     token?: string ;
+    pagination? : IPaginationOptions;
 }

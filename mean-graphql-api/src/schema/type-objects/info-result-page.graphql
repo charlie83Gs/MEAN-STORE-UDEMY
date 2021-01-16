@@ -1,0 +1,7 @@
+type PaginationResult{
+    page: Int!,
+    total: Int!,
+    #documents per page
+    items: Int!,
+    pages: Int!,
+}

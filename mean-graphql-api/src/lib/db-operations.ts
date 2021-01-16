@@ -1,3 +1,4 @@
+import { IPaginationOptions } from "./../interfaces/pagination-options";
 import { Db } from "mongodb";
 
 /**
@@ -22,7 +23,7 @@ export const getNewDocumentId = async (
     .toArray();
 
   if (lastElement.length <= 0) {
-    return '1';
+    return "1";
   }
 
   return (Number(lastElement[0].id) + 1).toString();
@@ -39,9 +40,24 @@ export const findOneElement = async (
 export const findManyElements = async (
   db: Db,
   collection: string,
-  filter: object = {}
+  filter: object = {},
+  paginationOtpions: IPaginationOptions = {
+    page: 1,
+    pages: 1,
+    items: -1,
+    skip: 0,
+    total: -1,
+  }
 ) => {
-  return await await db.collection(collection).find(filter).toArray();
+  if (paginationOtpions.total === -1) {
+    return await db.collection(collection).find(filter).toArray();
+  }
+  return await db
+    .collection(collection)
+    .find(filter)
+    .limit(paginationOtpions.items)
+    .skip(paginationOtpions.skip)
+    .toArray();
 };
 
 export const insertOneElement = async (
@@ -60,14 +76,13 @@ export const insertManyElement = async (
   return await db.collection(collection).insertMany(documents);
 };
 
-
 export const updateOneElement = async (
   db: Db,
   collection: string,
   filter: object,
   update: object
 ) => {
-  return await db.collection(collection).updateOne(filter,{$set:update});
+  return await db.collection(collection).updateOne(filter, { $set: update });
 };
 
 export const deleteOneElement = async (
@@ -76,4 +91,8 @@ export const deleteOneElement = async (
   filter: object
 ) => {
   return await db.collection(collection).deleteOne(filter);
+};
+
+export const countElements = async (db: Db, collection: string) => {
+  return await db.collection(collection).countDocuments();
 };
