@@ -23,8 +23,7 @@ services:
       - mean-store-network
 
   mean-store-graphql-api:
-    build:
-      context: ../mean-graphql-api
+    image: node:10.23.1-alpine3.9
     container_name: graphql
     restart: always
     ports:

@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yml up -d --build mean-store-graphql-api
+docker-compose -f docker-compose.yml up -d --build mean-store-frontent
