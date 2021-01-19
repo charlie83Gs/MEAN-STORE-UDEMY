@@ -1,3 +1,4 @@
+import { RESULT_PAGINATION_FRAGMENT } from './../fragment/result-pagination';
 import gql from 'graphql-tag';
 import { USER_FRAGMENT } from '@graphql/operations/fragment/user';
 
@@ -17,16 +18,20 @@ export const LOGIN_QUERY = gql`
 `;
 
 export const USER_LIST_QUERY = gql`
-  query usersList($dates: Boolean!){
-    users{
+  query usersList($dates: Boolean!, $page: Int, $items: Int){
+    users(page: $page, items: $items){
       status
       message
       users{
      	  ...UserObject
       }
+      pagination{
+        ... ResultPaginationObject
+      }
     }
   }
   ${ USER_FRAGMENT }
+  ${ RESULT_PAGINATION_FRAGMENT }
 `;
 
 

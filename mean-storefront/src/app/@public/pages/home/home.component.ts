@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
     //   }
     // )
 
-    // this.users.getUsers().subscribe(
-    //   result => {
-    //     console.log(JSON.stringify(result));
-    //   }
-    // )
+    this.users.getUsers(1,1).subscribe(
+      result => {
+        console.log(JSON.stringify(result));
+      }
+    )
     // this.auth.validateSession().subscribe(
     //   result => {
     //     console.log(JSON.stringify(result));

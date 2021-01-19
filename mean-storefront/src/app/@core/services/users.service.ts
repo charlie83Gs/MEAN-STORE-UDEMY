@@ -15,9 +15,11 @@ export class UsersService extends ApiService{
       super(apollo);
   }
 
-  getUsers() {
+  getUsers(page: number =1, items:number =20) {
     let variables = {
-      dates: true
+      dates: true,
+      page,
+      items
     };
     return this.get(USER_LIST_QUERY, variables).pipe(
       map(
