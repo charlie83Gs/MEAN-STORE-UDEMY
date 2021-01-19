@@ -1,0 +1,1 @@
+docker logs --build mean-store-graphql-api

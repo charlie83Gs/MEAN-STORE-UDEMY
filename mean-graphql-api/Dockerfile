@@ -4,7 +4,5 @@ WORKDIR /home/node/app
 
 COPY ./ ./
 
-USER node
-
 RUN npm install -- quiet
 
